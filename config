@@ -43,7 +43,7 @@ new_window pixel 14
 gaps inner 32
 
 # Start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec gnome-terminal
 
 # Kill focused window
 bindsym $mod+Shift+q kill
