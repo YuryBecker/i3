@@ -1,4 +1,4 @@
-# ---- Colors ---- #
+# ---- Themes ---- #
 # Gruv
 set $bg-color 	         #282828
 set $inactive-bg-color   #1d2021
@@ -13,7 +13,7 @@ set $text-color          #069b94
 set $inactive-text-color #98D1CE
 set $urgent-bg-color     #cc241d
 
-# Monochrome
+# Themes
 set $bg-color            #262626
 set $inactive-bg-color   #262626
 set $text-color          #B8B9B4
@@ -21,9 +21,13 @@ set $inactive-text-color #B8B9B4
 set $urgent-bg-color     #2E2E2C
 set $active-border       #2F2F2F
 
-# Special colors
+
+# ---- Colors ---- #
+set $grey                #7f8c8d
 set $lime-green          #2F2F2F
 set $yellow              #FEDA6A
+set $midnightBlue        #2c3e50
+set $purple              #8e44ad
 
 
 # ---- General Setup ---- #
@@ -31,16 +35,16 @@ set $yellow              #FEDA6A
 set $mod Mod1
 
 # Font
-font pango: Terminess Powerline Regular 15
+font pango: Ubuntu Mono derivative Powerline Regular 16
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # Padding width
-new_window pixel 14
+new_window pixel 1
 
 # Gap between windows
-gaps inner 32
+gaps inner 0
 
 # Start a terminal
 bindsym $mod+Return exec gnome-terminal
@@ -49,7 +53,7 @@ bindsym $mod+Return exec gnome-terminal
 bindsym $mod+Shift+q kill
 
 # Start rofi (a program launcher)
-bindsym $mod+space exec rofi -show run -lines 3 -eh 2 -width 36 -padding 48 -opacity "100" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "$urgent-bg-color" -font "Terminess Powerline Regular 20"
+bindsym $mod+space exec rofi -show run -lines 5 -eh 2 -width 16 -padding 24 -opacity "100" -font "Ubuntu Mono derivative Powerline Regular 16" -bg "#FFFFFF"
 
 # Change focus between tiling / floating windows
 bindsym $mod+d focus mode_toggle
@@ -78,6 +82,10 @@ for_window [window_role=ranger] floating enable
 
 
 # ---- Media ---- #
+# Loop line-out to line-in (hear input audio through line-out):
+exec pactl load-module module-loopback
+
+
 # Play
 bindsym $mod+Shift+slash exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 
@@ -95,10 +103,6 @@ bindsym $mod+Shift+minus exec amixer -q set Master 2dB- unmute
 # Start network applet.
 exec --no-startup-id nm-applet
 
-# Start reshift
-exec redshift
-exec redshift-gtk
-
 # Init compton.
 exec compton -b --config ~/.config/.compton.conf
 
@@ -106,7 +110,7 @@ exec compton -b --config ~/.config/.compton.conf
 exec_always ~/.i3/scripts/4k.sh
 
 # Show wallpaper.
-exec_always feh --bg-scale --randomize ~/Pictures/Wallpapers/*
+exec_always feh --bg-scale --randomize ~/Pictures/*
 
 # Remap capslock to escape.
 exec_always setxkbmap -option caps:escape
@@ -213,7 +217,7 @@ set $cyan    #33859e
 set $green   #2aa889
 
 #                       Background              Border             Text                 Indicator
-client.focused          $bg-color               $yellow            $text-color          #98D1CE
+client.focused          $bg-color               $grey              $text-color          #98D1CE
 client.unfocused        $inactive-bg-color      $bg-color          $inactive-text-color #98D1CE
 client.focused_inactive $inactive-bg-color      $bg-color          $inactive-text-color #98D1CE
 client.urgent           $urgent-bg-color        $red               $text-color          #98D1CE
@@ -227,7 +231,8 @@ bindsym $mod+shift+x exec i3lock --color "$bg-color"
 bar {
 	status_command i3blocks -c ~/.config/i3/i3.blocks.conf
 
-	font pango: Terminess Powerline Regular 10
+    font pango: Ubuntu Mono derivative Powerline Regular 8
+
     separator_symbol " "
 
 	colors {
