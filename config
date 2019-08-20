@@ -77,13 +77,12 @@ bindsym $mod+Shift+n exec --no-startup-id gnome-terminal --geometry 120x60 --rol
 for_window [window_role=notes] floating enable
 
 # Files
-bindsym $mod+Shift+f exec --no-startup-id gnome-terminal --geometry 120x60 --role ranger -e 'ranger'
-for_window [window_role=ranger] floating enable
+bindsym $mod+Shift+f exec nautilus
 
 
 # ---- Media ---- #
 # Loop line-out to line-in (hear input audio through line-out):
-exec pactl load-module module-loopback
+#exec pactl load-module module-loopback
 
 
 # Play
