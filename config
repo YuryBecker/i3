@@ -43,9 +43,6 @@ floating_modifier $mod
 # Padding width
 new_window pixel 1
 
-# Gap between windows
-gaps inner 0
-
 # Start a terminal
 bindsym $mod+Return exec gnome-terminal
 
@@ -78,6 +75,7 @@ for_window [window_role=notes] floating enable
 
 # Files
 bindsym $mod+Shift+f exec nautilus
+for_window [class=Nautilus] floating enable
 
 
 # ---- Media ---- #
@@ -94,6 +92,7 @@ bindsym $mod+Shift+less exec "dbus-send --print-reply --dest=org.mpris.MediaPlay
 # Next
 bindsym $mod+Shift+greater exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 
+# Volume
 bindsym $mod+Shift+equal exec amixer -q set Master 2dB+ unmute
 bindsym $mod+Shift+minus exec amixer -q set Master 2dB- unmute
 
@@ -117,6 +116,12 @@ exec_always setxkbmap -option caps:escape
 # Add git ssh key
 exec ssh-add ~/.ssh/keys/git
 exec ssh-add ~/.ssh/keys/art-in-a-sec.pem
+
+
+# ---- Sticky ---- #
+# Painter:
+for_window [class=Painter.x86_64] floating enable, sticky enable
+
 
 
 # ---- Window management ---- #
