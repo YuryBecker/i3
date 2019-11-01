@@ -108,7 +108,7 @@ exec compton -b --config ~/.config/.compton.conf
 exec_always ~/.i3/scripts/4k.sh
 
 # Show wallpaper.
-exec_always feh --bg-scale --randomize ~/Pictures/*
+exec_always feh --bg-fill --randomize ~/Pictures/*
 
 # Remap capslock to escape.
 exec_always setxkbmap -option caps:escape
